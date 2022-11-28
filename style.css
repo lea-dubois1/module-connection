@@ -1,0 +1,58 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url(images/background.webp);
+    background-size: cover;
+}
+
+main{
+    height: 78vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h2{
+    margin-top: -11vh;
+    width: 99vw;
+    color: white;
+    text-shadow: 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0), 0 0 2px rgb(0, 0, 0);
+    font-size: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label{
+    font-size: 3.2vmin;
+    font-weight: bold;
+}
+
+input{
+    margin: 0.9vmin;
+    padding: 3px;
+}
+
+.formulaire{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: -21vh;
+}
+
+.welcome{
+    width: 99vw;
+    height: 100%;
+    color: white;
+    text-shadow: 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0), 0 0 3px rgb(0, 0, 0);
+    font-size: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 8vh;
+}
