@@ -14,15 +14,24 @@
 
             <h2>CONNEXION</h2>
 
-            <form action="" method="post" class="formulaire">
+            <form action="login.php" method="POST" class="formulaire">
 
                 <label for="login">Login</label>
-                <input type="text" name="login" id="prenom" required>
+                <input type="text" name="login" required>
 
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
+                <input type="password" name="password" required>
 
                 <input type="submit" value="Connexion">
+
+                <?php
+                    if(isset($_GET['erreur'])){
+                        $err = $_GET['erreur'];
+                        if($err==1 || $err==2)
+                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                    }
+                ?>
+
             </form>
         </main>
 

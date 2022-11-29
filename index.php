@@ -11,7 +11,7 @@
         <?php include 'header.php' ?>
 
         <main>
-            <h2 class="welcome">WELCOME<? echo $login ?></h2>
+            <h2 class="welcome">WELCOME</h2>
         </main>
 
         <?php include 'footer.php' ?>
