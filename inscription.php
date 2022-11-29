@@ -8,6 +8,7 @@
     </head>
 
     <body>
+        <?php include 'connexion-donne.php' ?>
         <?php include 'header.php' ?>
 
         <main class="main-inscription">
@@ -34,6 +35,31 @@
                 <input type="submit" value="Inscription">
             </form>
         </main>
+
+
+
+        <?php
+        var_dump($_POST);
+
+        $showAlert = false; 
+        $showError = false; 
+        $exists=false;
+            
+            // Include file which makes the
+            // Database Connection.
+            include 'connexion-donne.php';   
+            
+            $login = $_POST["login"]; 
+            $prenom = $_POST["prenom"];
+            $nom = $_POST["nom"];
+            $password = $_POST["password"]; 
+            $confpassword = $_POST["confirm-password"]; 
+
+        ?>
+
+
+
+
 
         <?php include 'footer.php' ?>
     </body>
