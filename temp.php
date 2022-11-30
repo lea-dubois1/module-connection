@@ -1,33 +1,65 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css" media="screen" type="text/css">
-    </head>
-    <body>
-        <?php include 'header.php'?>
-        <main>
-            <section class="formulaire">
-                <form action="login.php" method="POST">
-                    <h1>Sign in here</h1>
+<?php
+    
+$showAlert = false; 
+$showError = false; 
+$exists=false;
+$error1=false;
+$error2=false;
+    
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+      
+    // Include file which makes the
+    // Database Connection.
+    include 'conect_bdd.php';   
+    
+    $login = $_POST["login"]; 
+    $prenom = $_POST["prenom"]; 
+    $nom = $_POST["nom"];
+    $password = $_POST["password"];
+    $passwordConfirm = $_POST["passwordConfirm"];
+            
+    
+    $sql = "Select * from utilisateurs where login='$login'";
+    
+    $result = mysqli_query($db, $sql);
+    
+    $num = mysqli_num_rows($result);
+    
+    // This sql query is use to check if
+    // the username is already present 
+    // or not in our Database
+    if($num <= 0) {
 
-                    <label class="form"><b>Username</b></label>
-                    <input class="form2" type="text" placeholder="Enter the username" name="login" required>
+        if(strlen($login && $password) <= 5){
 
-                    <label class="form"><b>Password</b></label>
-                    <input class="form2" type="password" placeholder="Enter Password" name="password" required>
+            $error1 = "Le login ou le password sont trop courts";
 
-                    <button type="submit" id="submit" value="Sign Up" name="submit" class="form">Sign In</button>
-                    <?php
-                        if(isset($_GET['erreur'])){
-                        $err = $_GET['erreur'];
-                        if($err==1 || $err==2)
-                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-                        }
-                    ?>
-                </form>
-            </section>
-        </main>
-        <?php include 'footer.php'?>
-    </body>
-</html>
+        }elseif(!preg_match("[\W]+", $POST['login'])){
+
+            $error2 = "Les caractères spéciaux ne sont pas autorisés";
+
+        }elseif(($password != $passwordConfirm)) {
+
+            $showError = "Les passwords ne sont pas identiques";
+        }else{
+            
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+                
+            // Password Hashing is used here. 
+            $sql = "INSERT INTO `utilisateurs` ( `login`, 
+                `prenom`, `nom`, `password`) VALUES ('$login', '$prenom', '$nom', '$hash')";
+    
+            $result = mysqli_query($db, $sql);
+    
+            if ($result) {
+                $showAlert = true; 
+            }
+        }
+           
+    }else{
+    $exists="Le login existe déjà"; 
+    }
+    
+}  
+    
+?>

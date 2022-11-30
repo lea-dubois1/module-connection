@@ -1,3 +1,5 @@
+<?php require_once 'login.php' ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +16,7 @@
 
             <h2>CONNEXION</h2>
 
-            <form action="login.php" method="POST" class="formulaire">
+            <form action="" method="POST" class="formulaire">
 
                 <label for="login">Login</label>
                 <input type="text" name="login" required>
@@ -22,14 +24,14 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" required>
 
-                <input type="submit" value="Connexion">
+                <input type="submit" value="Connexion" name="submit">
 
                 <?php
-                    if(isset($_GET['erreur'])){
-                        $err = $_GET['erreur'];
-                        if($err==1 || $err==2)
-                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-                    }
+                    // Display error messages (cf login.php) //
+
+                    if($error1){echo $error1;}
+
+                    if($error2){echo $error2;}
                 ?>
 
             </form>
