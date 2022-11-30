@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $error2 = "Le password est trop courts";
 
-        }elseif(preg_match("[\W]", $_POST['login'])){    // If there is non-alphanumeric characters in the login
+        }elseif(preg_match("[\W]", $_POST['login']) || preg_match("[\W]", $_POST['nom']) || preg_match("[\W]", $_POST['prenom'])){    // If there is non-alphanumeric characters in the login
 
             $error3 = "Les caractères spéciaux ne sont pas autorisés";
 
@@ -59,6 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
             if ($result) {      // If the user is created
                 $showAlert = true;
+                //header('Location: connexion.php');
             }
         }
            

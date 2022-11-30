@@ -8,6 +8,8 @@
 
     <header>
 
+        <?php session_start()?>
+
         <nav>
 
             <a class="lien" href="index.php">Acceuil</a>
