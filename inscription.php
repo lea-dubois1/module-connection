@@ -14,9 +14,9 @@
 
         <main class="main-inscription">
 
-            <h2>SIGNUP</h2>
-
             <form action="" method="POST" class="formulaire">
+
+                <h2>SIGNUP</h2>
 
                 <label for="login">Login</label>
                 <input type="text" name="login" value="<?php if($error){ echo $_POST['login'];} ?>" required> <!-- Rewrite the completed inputs if the passwords dont match -->
@@ -33,7 +33,7 @@
                 <label for="passwordConfirm">Confirm password</label>
                 <input type="password" name="passwordConfirm" required>
 
-                <input type="submit" value="Inscription" name="submit">
+                <input type="submit" value="Signup" name="submit" class="bouton">
 
                 <?php
 

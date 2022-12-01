@@ -13,7 +13,7 @@
 
         <main>
 
-            <h2>CHANGE PROFILE</h2>
+            <h2 class="title_change">CHANGE PROFILE</h2>
 
             <form action="" method="POST" class="formulaire">
 
@@ -35,11 +35,12 @@
                 <label for="confirm-password">Confirm new password</label>
                 <input type="password" name="confirm-password" id="confirm-password">
 
-                <input type="submit" value="Edit" name="submit">
+                <input type="submit" value="Edit" name="submit" class="bouton">
 
                 <?php
 
                     if($error) {echo '<strong>Error!</strong> '. $error;}
+
                     if($ok >= 1) {echo "Your profil have been edited successfully";}
 
                 ?>

@@ -11,7 +11,7 @@
         <?php include 'header.php' ?>
 
         <main>
-            <h1 class="welcome">WELCOME <?php if($_SESSION){echo '&nbsp' . strtoupper($_SESSION['login']);} ?></h2>
+            <h1 class="welcome">WELCOME <?php if($_SESSION){echo '&nbsp' . strtoupper($_SESSION['login']);} ?></h1>
 
             <?php if($_SESSION){echo '<button type="submit" value="deconnexion" name="deconnexion" class="deco"><a href="logout.php">Logout</a></button>';} ?>
         </main>

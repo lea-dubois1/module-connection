@@ -56,6 +56,7 @@ if(isset($_POST['submit'])) {
                 $sqlNom = "update utilisateurs set nom = '$nomNew' where login = '$login'";
                 $rs = mysqli_query($db,$sqlNom);
                 $_SESSION['nom'] = $nomNew;
+                
                 $ok = 1;
 
             }
