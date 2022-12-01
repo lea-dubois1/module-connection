@@ -2,9 +2,7 @@
 
 require('conect_bdd.php');
 
-$error1= false;
-$error2= false;
-
+$error= "";
 
 if(isset($_POST['submit'])){
 
@@ -22,26 +20,22 @@ if(isset($_POST['submit'])){
     if($numRows == 1){    // If the login exist in the data base, continue
 
         $row = mysqli_fetch_assoc($rs);
+        $dataPass = $row['password'];
 
-        if(password_verify($password,$row['password'])){    // Check if the password existe in the database and decript it
+        if(password_verify($password,$dataPass)){    // Check if the password existe in the database and decript it
 
             $_SESSION['login'] = $login;
-            //header('Location: index.php');
-
-            echo "SESSION :";
             $_SESSION['prenom'] = $row['prenom'];
             $_SESSION['nom'] = $row['nom'];
             $_SESSION['password'] = $row['password'];
+
+            header('Location: index.php');
+        }else{    // If the password do not match, error
+            $error= "Wrong password";
         }
-        else{    // If the password do not match, error
-            $error1= "Mauvais mots de passe";
-        }
-    }
-    else{    // If the login do not exist, error
-        $error2= "Le login n'existe pas. Vous n'avez pas de compte? <a href=\"inscription.php\">Inscrivez-vous</a>";
+    }else{    // If the login do not exist, error
+        $error= "The login do not exist. You don't have an account? <a href=\"inscription.php\">Signup</a>";
     }
 }
-
-var_dump($_SESSION);
 
 ?>

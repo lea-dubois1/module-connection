@@ -7,6 +7,6 @@
     </head>
 
     <footer>
-        <a class="github" href="https://github.com/lea-dubois1">Mon GitHub</a>
+        <a class="github" href="https://github.com/lea-dubois1">My GitHub</a>
     </footer>
 </html>

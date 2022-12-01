@@ -2,129 +2,122 @@
 
 require('conect_bdd.php');
 
-// Set variables to use in the following request.
-$login = $_SESSION['login'];
-$loginNew = $_POST['login'];
+$error = "";
+$ok = 0;
 
-$prenom = $_SESSION['prenom'];
-$prenomNew = $_POST['prenom'];
+if(isset($_POST['submit'])) {
 
-$nom = $_SESSION['nom'];
-$nomNew = $_POST['nom'];
+    // Set variables to use in the following request.
+    $login = $_SESSION['login'];
+    $loginNew = $_POST['login'];
 
-$passwordTrue = $_SESSION['password'];
-$password = $_POST['old-password'];
-$passwordNew = $_POST['new-password'];
-$passwordNewConfirm = $_POST['confirm-password'];
+    $prenom = $_SESSION['prenom'];
+    $prenomNew = $_POST['prenom'];
 
-$errorLog1 = false;
-$errorLog2 = false;
-$error2 = false;
-$error3 = false;
-$error4 = false;
-$error5 = false;
-$errorPass1 = false;
-$errorPass2 = false;
+    $nom = $_SESSION['nom'];
+    $nomNew = $_POST['nom'];
+
+    $passwordTrue = $_SESSION['password'];
+    $password = $_POST['old-password'];
+    $passwordNew = $_POST['new-password'];
+    $passwordNewConfirm = $_POST['confirm-password'];
+
+    // Colect all datas from the user
+    $sql = "select * from utilisateurs where login = '$login'";
+    $rs = mysqli_query($db,$sql);
+    $numRows = mysqli_num_rows($rs);
 
 
-// Set the request in a variable.
-$sql = "select * from utilisateurs where login = '$login'";
+    if(password_verify($password,$passwordTrue)){
 
-// Check if the username is already present or not in our Database.
-$rs = mysqli_query($db,$sql);
-$numRows = mysqli_num_rows($rs);
+        if ($prenom != $prenomNew){
+            if(preg_match("[\W]", $prenomNew)){
 
-if(password_verify($password,$passwordTrue)){
+                $error = "Specials characters are not allowed";
 
-    if ($prenom != $prenomNew){
-        if(preg_match("[\W]", $prenomNew)){
+            }else{
 
-            $error2 = "Les caractères spéciaux ne sont pas autorisés";
+                $sqlPre = "update utilisateurs set prenom = '$prenomNew' where login = '$login'";
+                $rs = mysqli_query($db,$sqlPre);
+                $_SESSION['prenom'] = $prenomNew;
+                $ok = 1;
 
-        }else{
-
-            $sqlPre = "update utilisateurs set prenom = '$prenomNew' where login = '$login'";
-            $rs = mysqli_query($db,$sqlPre);
-            $_SESSION['prenom'] = $prenomNew;
+            }
 
         }
+        
+        if ($nom != $nomNew){
+            if(preg_match("[\W]", $nomNew)){    // If there is non-alphanumeric characters in the login
 
-    }
-    
-    if ($nom != $nomNew){
-        if(preg_match("[\W]", $nomNew)){    // If there is non-alphanumeric characters in the login
+                $error = "Specials characters are not allowed";
 
-            $error2 = "Les caractères spéciaux ne sont pas autorisés";
+            }else{
 
-        }else{
+                $sqlNom = "update utilisateurs set nom = '$nomNew' where login = '$login'";
+                $rs = mysqli_query($db,$sqlNom);
+                $_SESSION['nom'] = $nomNew;
+                $ok = 1;
 
-            $sqlNom = "update utilisateurs set nom = '$nomNew' where login = '$login'";
-            $rs = mysqli_query($db,$sqlNom);
-            $_SESSION['nom'] = $nomNew;
+            }
+        }
+        
+        if (!empty($passwordNew)){
+
+            if(strlen($passwordNew) <= 5){    // If the password's lenght is less or equal to 5
+
+                $error = "The password is too short";
+
+            }elseif (empty($passwordNewConfirm)){
+
+                $error = "Please confirm password";
+
+            }elseif(($passwordNew != $passwordNewConfirm)) {    // If the password is different than the password's confirmation
+
+                $error = "The passwords are differents";
+
+            }else{
+
+                // Cripting the new password
+                $hash = password_hash($passwordNew, PASSWORD_DEFAULT);
+
+                $sqlPass = "update utilisateurs set password = '$hash' where login = '$login'";
+                $rs = mysqli_query($db,$sqlPass);
+                $_SESSION['password'] = $hash;
+                $ok = 1;
+
+            }
 
         }
-    }
-    
-    if (!empty($passwordNew)){
+        
+        if ($login != $loginNew){
+            if($numRows!=1){
 
-        if(strlen($passwordNew) <= 5){    // If the password's lenght is less or equal to 5
+                $error = "The login already exist";
 
-            $error3 = "Le mot de passe est trop court";
+            }elseif(strlen($login) <= 5){    // If the login's lenght is less or equal to 5
 
-        }elseif (empty($passwordNewConfirm)){
+                $error = "The login is too short";
 
-            $error4 = "Veuillez confirmer le nouveau mot de passe";
+            }elseif(preg_match("[\W]", $loginNew)){    // If there is non-alphanumeric characters in the login
 
-        }elseif(($passwordNew != $passwordNewConfirm)) {    // If the password is different than the password's confirmation
+                $error = "Specials characters are not allowed";
 
-            $error5 = "Les mots de passe ne sont pas identiques";
+            }else{
 
-        }else{
+                $sqlLog = "update utilisateurs set login = '$loginNew' where login = '$login'";
+                $rs = mysqli_query($db,$sqlLog);
+                $_SESSION['login'] = $loginNew;
+                $ok = 1;
 
-            // Cripting the new password
-            $hash = password_hash($passwordNew, PASSWORD_DEFAULT);
-
-            $sqlPass = "update utilisateurs set password = '$hash' where login = '$login'";
-            $rs = mysqli_query($db,$sqlPass);
-            $_SESSION['password'] = $hash;
+            }
 
         }
+        
+    }else{
+
+        $error = "Wrong password";
 
     }
-    
-    if ($login != $loginNew){
-        if($numRows<=0){
-
-            $errorLog1 = "Le login existe déjà";
-
-        }elseif(strlen($login) <= 5){    // If the login's lenght is less or equal to 5
-
-            $errorLog2 = "Le login est trop courts";
-
-        }elseif(preg_match("[\W]", $loginNew)){    // If there is non-alphanumeric characters in the login
-
-            $error2 = "Les caractères spéciaux ne sont pas autorisés";
-
-        }else{
-
-            $sqlLog = "update utilisateurs set login = '$loginNew' where login = '$login'";
-            $rs = mysqli_query($db,$sqlLog);
-            $_SESSION['login'] = $loginNew;
-
-        }
-
-    }
-
-}elseif (empty($password)){
-    
-    $errorPass1 = "Veuillez entrer votre mot de passe pour confirmer le changement";
-
-}else{
-
-    $errorPass2 = "Mot de passe incorrect";
-
 }
-
-var_dump($_SESSION);
 
 ?>

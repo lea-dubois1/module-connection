@@ -1,20 +1,18 @@
-<?php require_once 'login.php' ?>
-
 <!DOCTYPE html>
 <html>
 
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <title>Connexion</title>
+        <title>Login</title>
     </head>
 
     <body>
         <?php include 'header.php' ?>
-
+        <?php require 'login.php' ?>
         <main>
 
-            <h2>CONNEXION</h2>
+            <h2>LOGIN</h2>
 
             <form action="" method="POST" class="formulaire">
 
@@ -29,9 +27,7 @@
                 <?php
                     // Display error messages (cf login.php) //
 
-                    if($error1){echo $error1;}
-
-                    if($error2){echo $error2;}
+                    if($error) {echo '<strong>Error!</strong> '. $error;}
                 ?>
 
             </form>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <title>Acceuil</title>
+        <title>Admin</title>
     </head>
 
     <body>
@@ -12,7 +12,7 @@
 
         <main>
 
-            <h2>INFORMATIONS UTILISATEURS</h2>
+            <h2>USERS DATA</h2>
         </main>
 
         <?php include 'footer.php' ?>

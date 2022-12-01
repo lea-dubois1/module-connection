@@ -1,27 +1,22 @@
 <?php
+      
+// Include file which makes the Database Connection.
+include 'conect_bdd.php';   
 
 // Set variables to false so we start whith no errors.
-$showAlert = false; 
-$showError = false; 
-$exists=false;
-$error1=false;
-$error2=false;
-$error3=false;
+$created = false;
+$error = "";
 
-// If the methode is GET it could be dangerous
-// cause there is a password and we don't want it in the URL.
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-      
-    // Include file which makes the Database Connection.
-    include 'conect_bdd.php';   
+// Check if the form is submited
+if(isset($_POST['submit'])) {
     
     // Set variables to use in the following request.
     $login = $_POST["login"]; 
-    $prenom = $_POST["prenom"]; 
+    $prenom = $_POST["prenom"];
     $nom = $_POST["nom"];
     $password = $_POST["password"];
     $passwordConfirm = $_POST["passwordConfirm"];
-    
+
     // Set the request in a variable.
     $sql = "Select * from utilisateurs where login='$login'";
     
@@ -29,24 +24,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($db, $sql);
     $num = mysqli_num_rows($result);
     
+    
     if($num <= 0) {     // If the login do not exist in the Database, we check for errors
 
         // LIST OF ERRORS
         if(strlen($login) <= 5){    // If the login's lenght is less or equal to 5
 
-            $error1 = "Le login est trop courts";
+            $error = "Le login est trop court";
 
         }elseif(strlen($password) <= 5){    // If the password's lenght is less or equal to 5
 
-            $error2 = "Le password est trop courts";
+            $error = "Le mot de passe est trop court";
 
         }elseif(preg_match("[\W]", $_POST['login']) || preg_match("[\W]", $_POST['nom']) || preg_match("[\W]", $_POST['prenom'])){    // If there is non-alphanumeric characters in the login
 
-            $error3 = "Les caractères spéciaux ne sont pas autorisés";
+            $error = "Les caractères spéciaux ne sont pas autorisés";
 
         }elseif(($password != $passwordConfirm)) {    // If the password is different than the password's confirmation
 
-            $showError = "Les passwords ne sont pas identiques";
+            $error = "Les mots de passe ne sont pas identiques";
         }else{      // If everithing is fine and there is no error
             
             // Cripting the password
@@ -58,13 +54,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = mysqli_query($db, $sql);
     
             if ($result) {      // If the user is created
-                $showAlert = true;
-                //header('Location: connexion.php');
+                $created = true;
+                header('Location: connexion.php');
+                session_destroy();
             }
         }
            
     }else{      // If login already exist
-        $exists="Le login existe déjà"; 
+        $exists = "Le login existe déjà"; 
     } 
 }  
     
