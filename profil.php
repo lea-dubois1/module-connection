@@ -17,23 +17,47 @@
 
             <form action="" method="POST" class="formulaire">
 
-                <label for="login">Login</label>
-                <input type="text" name="login" value="<?php {echo $_SESSION['login'];} ?>" required>
-
-                <label for="prenom">First name</label>
-                <input type="text" name="prenom" value="<?php {echo $_SESSION['prenom'];} ?>" required>
-
-                <label for="nom">Last name</label>
-                <input type="text" name="nom" value="<?php echo $_SESSION['nom']; ?>" required>
-
-                <label for="old-password">Password</label>
-                <input type="password" name="old-password" id="old-password" required>
-
-                <label for="new-password">New password</label>
-                <input type="password" name="new-password" id="new-password">
-
-                <label for="confirm-password">Confirm new password</label>
-                <input type="password" name="confirm-password" id="confirm-password">
+                <div class="group">      
+                    <input type="text" name="login" value="<?php {echo $_SESSION['login'];} ?>" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Login</label>
+                </div>
+                
+                <div class="group">      
+                    <input type="text" name="prenom" value="<?php {echo $_SESSION['prenom'];} ?>" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>First name</label>
+                </div>
+                
+                <div class="group">      
+                    <input type="text" name="nom" value="<?php echo $_SESSION['nom']; ?>" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Last name</label>
+                </div>
+                
+                <div class="group">      
+                    <input type="pasword" name="password" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Password</label>
+                </div>
+                
+                <div class="group">      
+                    <input type="pasword" name="new-password" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>New password</label>
+                </div>
+                
+                <div class="group">      
+                    <input type="pasword" name="confirm-password" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Confirm new password</label>
+                </div>
 
                 <input type="submit" value="Edit" name="submit" class="bouton">
 

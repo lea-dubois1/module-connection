@@ -17,11 +17,19 @@
             
                 <h2>LOGIN</h2>
 
-                <label for="login">Login</label>
-                <input type="text" name="login" required>
-
-                <label for="password">Password</label>
-                <input type="password" name="password" required>
+                <div class="group">      
+                    <input type="text" name="login" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Login</label>
+                </div>
+                
+                <div class="group">      
+                    <input type="password" name="password" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Password</label>
+                </div>
 
                 <input type="submit" value="Login" name="submit" class="bouton">
 
