@@ -39,28 +39,28 @@
                 </div>
                 
                 <div class="group">      
-                    <input type="pasword" name="password" required>
+                    <input type="password" name="old-password" required>
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Password</label>
                 </div>
                 
                 <div class="group">      
-                    <input type="pasword" name="new-password" required>
+                    <input type="password" name="new-password" placeholder="New password">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>New password</label>
                 </div>
                 
                 <div class="group">      
-                    <input type="pasword" name="confirm-password" required>
+                    <input type="password" name="confirm-password" placeholder="Confirm new password">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Confirm new password</label>
                 </div>
 
-                <input type="submit" value="Edit" name="submit" class="bouton">
-
+                <div class="frame">
+                    <button class="custom-btn btn-8" name="submit"><span>Edit</span></button>
+                </div>
+                
                 <?php
 
                     if($error) {echo '<strong>Error!</strong> '. $error;}

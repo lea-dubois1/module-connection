@@ -3,6 +3,7 @@ footer{
     display: flex;
     justify-content: space-around;
     padding: 1.5vw 1vw 1.5vw 1vw;
+    margin-top: 1vh;
 }
 
 .github{

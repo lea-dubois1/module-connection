@@ -53,8 +53,10 @@
                     <label>Confirm password</label>
                 </div>
 
-                <input type="submit" value="Signup" name="submit" class="bouton">
-
+                <div class="frame">
+                    <button class="custom-btn btn-8" name="submit"><span>Signup</span></button>
+                </div>
+                
                 <?php
 
                     // Display error messages (cf signup.php) //

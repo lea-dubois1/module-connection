@@ -31,7 +31,9 @@
                     <label>Password</label>
                 </div>
 
-                <input type="submit" value="Login" name="submit" class="bouton">
+                <div class="frame">
+                    <button class="custom-btn btn-8" name="submit"><span>Login</span></button>
+                </div>
 
                 <?php
                     // Display error messages (cf login.php) //

@@ -28,11 +28,11 @@ if(isset($_POST['submit'])) {
     if($num <= 0) {     // If the login do not exist in the Database, we check for errors
 
         // LIST OF ERRORS
-        if(strlen($login) <= 5){    // If the login's lenght is less or equal to 5
+        if(strlen($login) <= 4){    // If the login's lenght is less or equal to 5
 
             $error = "Le login est trop court";
 
-        }elseif(strlen($password) <= 5){    // If the password's lenght is less or equal to 5
+        }elseif(strlen($password) <= 4){    // If the password's lenght is less or equal to 5
 
             $error = "Le mot de passe est trop court";
 
