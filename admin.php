@@ -13,7 +13,7 @@
 
         <main>
 
-            <h2>USERS DATA</h2>
+            <h2 class="users-data">USERS DATA</h2>
 
             <table>
 
@@ -28,7 +28,7 @@
                             $result = mysqli_fetch_assoc($rs);
 
                             foreach ($result as $key => $value){
-                                echo '<th>' . $key . '</th>';
+                                echo '<th>' . strtoupper($key) . '</th>';
                             }
                         ?>
 
