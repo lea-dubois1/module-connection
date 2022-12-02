@@ -101,7 +101,7 @@ table {
 input {
     background-color: rgba(0, 0, 0, 0);
     font-size:2.6vh;
-    padding:10px 10px 10px 5px;
+    padding: 7px 10px 10px 5px;
     display:block;
     width:300px;
     border:none;
@@ -203,7 +203,7 @@ input:focus ~ .highlight {
 
 .frame {
     width: 90%;
-    margin: -1.5vh;
+    margin: -1vh;
     text-align: center;
 }
 button {
