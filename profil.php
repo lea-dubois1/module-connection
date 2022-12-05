@@ -65,7 +65,7 @@
 
                     if($error) {echo '<strong>Error!</strong> '. $error;}
 
-                    if($ok >= 1) {echo "Your profil have been edited successfully";}
+                    if($ok >= 1) {echo "<strong>Success!</strong> Your profil have been edited successfully";}
 
                 ?>
 

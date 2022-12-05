@@ -157,7 +157,7 @@ input:focus ~ label, input:valid ~ label{
 }
 .bar:before, .bar:after{
     content:'';
-    height:1px; 
+    height:2px; 
     width:0;
     bottom:1px; 
     position:absolute;
@@ -288,8 +288,7 @@ button {
     background: transparent;
 }
 .btn-8 span:hover{
-    color: #ff9a9a;
-    font-weight: 700;
+    color: #ffe9e9;
     backdrop-filter: blur(10px);
 }
 .btn-8 span:before,
