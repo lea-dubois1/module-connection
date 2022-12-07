@@ -31,35 +31,21 @@ if(isset($_POST['submit'])) {
     if(password_verify($password,$passwordTrue)){
 
         if ($prenom != $prenomNew){
-            if(preg_match("[\W]", $prenomNew)){
 
-                $error = "Specials characters are not allowed";
-
-            }else{
-
-                $sqlPre = "update utilisateurs set prenom = '$prenomNew' where login = '$login'";
-                $rs = mysqli_query($db,$sqlPre);
-                $_SESSION['prenom'] = $prenomNew;
-                $ok = 1;
-
-            }
+            $sqlPre = "update utilisateurs set prenom = '$prenomNew' where login = '$login'";
+            $rs = mysqli_query($db,$sqlPre);
+            $_SESSION['prenom'] = $prenomNew;
+            $ok = 1;
 
         }
         
         if ($nom != $nomNew){
-            if(preg_match("[\W]", $nomNew)){    // If there is non-alphanumeric characters in the login
 
-                $error = "Specials characters are not allowed";
-
-            }else{
-
-                $sqlNom = "update utilisateurs set nom = '$nomNew' where login = '$login'";
-                $rs = mysqli_query($db,$sqlNom);
-                $_SESSION['nom'] = $nomNew;
-                
-                $ok = 1;
-
-            }
+            $sqlNom = "update utilisateurs set nom = '$nomNew' where login = '$login'";
+            $rs = mysqli_query($db,$sqlNom);
+            $_SESSION['nom'] = $nomNew;
+            
+            $ok = 1;
         }
         
         if (!empty($passwordNew)){
@@ -98,10 +84,6 @@ if(isset($_POST['submit'])) {
             }elseif(strlen($login) <= 5){    // If the login's lenght is less or equal to 5
 
                 $error = "The login is too short";
-
-            }elseif(preg_match("[\W]", $loginNew)){    // If there is non-alphanumeric characters in the login
-
-                $error = "Specials characters are not allowed";
 
             }else{
 

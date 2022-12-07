@@ -123,8 +123,8 @@ input {
     border-bottom:1.7px solid #000000;
 }
 input::placeholder{
-    color: #232323;
-    font-size:2.5vh;
+    color: #000000;
+    font-size:2.4vh;
 }
 input:focus{
     outline:none;

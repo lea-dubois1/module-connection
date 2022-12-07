@@ -36,10 +36,6 @@ if(isset($_POST['submit'])) {
 
             $error = "Le mot de passe est trop court";
 
-        }elseif(preg_match("[\W]", $_POST['login']) || preg_match("[\W]", $_POST['nom']) || preg_match("[\W]", $_POST['prenom'])){    // If there is non-alphanumeric characters in the login
-
-            $error = "Les caractères spéciaux ne sont pas autorisés";
-
         }elseif(($password != $passwordConfirm)) {    // If the password is different than the password's confirmation
 
             $error = "Les mots de passe ne sont pas identiques";
