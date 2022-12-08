@@ -22,7 +22,7 @@
                     <input type="text" name="login" value="<?php if($error){ echo $_POST['login'];} ?>" required>
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Login (minimum 5 character)</label>
+                    <label>Login</label>
                 </div>
 
                 <div class="group">      
@@ -43,7 +43,7 @@
                     <input type="password" name="password" required>
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Password (minimum 5 character)</label>
+                    <label>Password</label>
                 </div>
 
                 <div class="group">      

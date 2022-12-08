@@ -50,11 +50,7 @@ if(isset($_POST['submit'])) {
         
         if (!empty($passwordNew)){
 
-            if(strlen($passwordNew) <= 5){    // If the password's lenght is less or equal to 5
-
-                $error = "The password is too short";
-
-            }elseif (empty($passwordNewConfirm)){
+            if (empty($passwordNewConfirm)){
 
                 $error = "Please confirm password";
 
@@ -77,13 +73,10 @@ if(isset($_POST['submit'])) {
         }
         
         if ($login != $loginNew){
+
             if($numRows!=1){
 
                 $error = "The login already exist";
-
-            }elseif(strlen($login) <= 5){    // If the login's lenght is less or equal to 5
-
-                $error = "The login is too short";
 
             }else{
 
@@ -93,7 +86,6 @@ if(isset($_POST['submit'])) {
                 $ok = 1;
 
             }
-
         }
         
     }else{

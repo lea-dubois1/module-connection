@@ -21,7 +21,7 @@
                     <input type="text" name="login" value="<?php {echo $_SESSION['login'];} ?>" required>
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Login (minimum 5 character)</label>
+                    <label>Login</label>
                 </div>
                 
                 <div class="group">      
@@ -46,7 +46,7 @@
                 </div>
                 
                 <div class="group">      
-                    <input type="password" name="new-password" placeholder="New password (minimum 5 character)">
+                    <input type="password" name="new-password" placeholder="New password">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                 </div>
